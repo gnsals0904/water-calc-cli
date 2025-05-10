@@ -1,9 +1,10 @@
 package com.vutz.watercalccli.common.initializer;
 
 import com.vutz.watercalccli.account.dto.Account;
-import com.vutz.watercalccli.account.dto.AccountJsonDto;
 import com.vutz.watercalccli.account.repository.AccountRepository;
 import com.vutz.watercalccli.common.dataparser.DataParser;
+import com.vutz.watercalccli.tariff.dto.Tariff;
+import com.vutz.watercalccli.tariff.repository.TariffRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,17 +19,19 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Order(InteractiveShellRunner.PRECEDENCE - 1)
 public class DataInitializer implements ApplicationRunner {
+
     private final DataParser dataParser;
     private final AccountRepository accountRepository;
+    private final TariffRepository tariffRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("====> run() 메서드 호출됨");
-        List<AccountJsonDto> jsonDtos = dataParser.accounts();
-        for(AccountJsonDto dto : jsonDtos){
-            Account account = dto.toAccount();
-            System.out.println("Account save : " + account);
-            accountRepository.save(account);
-        }
+        List<Account> accounts = dataParser.loadAccounts();
+        System.out.println(accounts);
+        accounts.forEach(accountRepository::save);
+
+        List<Tariff> tariffs = dataParser.loadTariffs();
+        System.out.println(tariffs);
+        tariffs.forEach(tariffRepository::save);
     }
 }
