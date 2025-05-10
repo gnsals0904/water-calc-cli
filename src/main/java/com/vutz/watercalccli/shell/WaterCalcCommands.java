@@ -1,24 +1,34 @@
 package com.vutz.watercalccli.shell;
 
+import com.vutz.watercalccli.account.dto.Account;
+import com.vutz.watercalccli.account.service.AuthenticationService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
 @ShellComponent
+@RequiredArgsConstructor
 public class WaterCalcCommands {
+
+    private final AuthenticationService authenticationService;
 
     @ShellMethod
     public String login(long id, String password) {
-        return null;
+        Account login = authenticationService.login(id, password);
+        return login.toString();
     }
 
     @ShellMethod
     public String logout() {
-        return null;
+        authenticationService.logout();
+        return "good bye";
     }
 
     @ShellMethod
     public String currentUser() {
-        return null;
+        return authenticationService.getCurrentAccount()
+                .map(Account::toString)
+                .orElse("");
     }
 
     @ShellMethod
