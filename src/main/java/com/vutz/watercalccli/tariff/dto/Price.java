@@ -1,4 +1,4 @@
-package com.vutz.watercalccli.price.dto;
+package com.vutz.watercalccli.tariff.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

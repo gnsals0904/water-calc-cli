@@ -1,6 +1,6 @@
-package com.vutz.watercalccli.price.formatter;
+package com.vutz.watercalccli.tariff.formatter;
 
-import com.vutz.watercalccli.price.dto.Price;
+import com.vutz.watercalccli.tariff.dto.Price;
 
 public class KoreanOutputFormatter implements OutPutFormatter {
 

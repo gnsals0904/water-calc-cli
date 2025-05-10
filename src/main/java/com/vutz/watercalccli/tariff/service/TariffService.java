@@ -1,9 +1,9 @@
-package com.vutz.watercalccli.price.service;
+package com.vutz.watercalccli.tariff.service;
 
-import com.vutz.watercalccli.price.dto.Price;
+import com.vutz.watercalccli.tariff.dto.Price;
 import java.util.List;
 
-public class PriceService {
+public class TariffService {
 
     public List<String> cities() {
         return null;
