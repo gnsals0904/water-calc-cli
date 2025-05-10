@@ -2,9 +2,11 @@ package com.vutz.watercalccli.common.dataparser;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vutz.watercalccli.account.dto.Account;
 import com.vutz.watercalccli.account.dto.AccountJsonDto;
 import com.vutz.watercalccli.common.properties.FileProperties;
-import com.vutz.watercalccli.price.dto.Price;
+import com.vutz.watercalccli.tariff.dto.Tariff;
+import com.vutz.watercalccli.tariff.dto.TariffJsonDto;
 import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -14,36 +16,42 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(name = "file.type", havingValue = "json")
 @RequiredArgsConstructor
+@ConditionalOnProperty(name = "file.type", havingValue = "json")
 public class JsonDataParser implements DataParser {
 
     private final ObjectMapper mapper;
     private final FileProperties fileProperties;
 
     @Override
-    public List<String> cities() {
-        return List.of();
+    public List<Tariff> loadTariffs() {
+        try {
+            Resource resource = new ClassPathResource(fileProperties.getPricePath());
+            List<TariffJsonDto> tariffJsonDtos = mapper.readValue(
+                    resource.getInputStream(),
+                    new TypeReference<List<TariffJsonDto>>() {}
+            );
+
+            return tariffJsonDtos.stream()
+                    .map(TariffJsonDto::toTariff)
+                    .toList();
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        }
     }
 
     @Override
-    public List<String> sectors(String city) {
-        return List.of();
-    }
-
-    @Override
-    public Price price(String city, String sector) {
-        return null;
-    }
-
-    @Override
-    public List<AccountJsonDto> accounts() {
+    public List<Account> loadAccounts() {
         try {
             Resource resource = new ClassPathResource(fileProperties.getAccountPath());
-            return mapper.readValue(
+            List<AccountJsonDto> accountJsonDtos = mapper.readValue(
                     resource.getInputStream(),
                     new TypeReference<List<AccountJsonDto>>() {}
             );
+
+            return accountJsonDtos.stream()
+                    .map(AccountJsonDto::toAccount)
+                    .toList();
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
