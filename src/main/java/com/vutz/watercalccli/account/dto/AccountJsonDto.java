@@ -1,0 +1,16 @@
+package com.vutz.watercalccli.account.dto;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public class AccountJsonDto {
+
+    @JsonProperty("아이디")
+    long id;
+
+    @JsonProperty("비밀번호")
+    String password;
+
+    @JsonProperty("이름")
+    String name;
+}
