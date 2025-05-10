@@ -1,4 +1,4 @@
-package com.vutz.watercalccli.price.dto;
+package com.vutz.watercalccli.tariff.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -21,4 +21,8 @@ public class TariffJsonDto {
 
     @JsonProperty("구간금액(원)")
     int unitPrice;
+
+    public Tariff toTariff(){
+        return new Tariff(id, city, sector, sectionStart, sectionEnd, unitPrice);
+    }
 }

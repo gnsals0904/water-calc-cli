@@ -1,9 +1,12 @@
-package com.vutz.watercalccli.price.dto;
+package com.vutz.watercalccli.tariff.dto;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Getter
+@Getter @ToString
+@EqualsAndHashCode
 @RequiredArgsConstructor
 public class Tariff {
     private final long id;
@@ -12,4 +15,8 @@ public class Tariff {
     private final int sectionStart;
     private final int sectionEnd;
     private final int unitPrice;
+
+    public boolean contains(int value) {
+        return sectionStart <= value && value <= sectionEnd;
+    }
 }
