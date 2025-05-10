@@ -1,16 +1,21 @@
 package com.vutz.watercalccli.account.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.RequiredArgsConstructor;
 
-
+@RequiredArgsConstructor
 public class AccountJsonDto {
 
     @JsonProperty("아이디")
-    long id;
+    private final long id;
 
     @JsonProperty("비밀번호")
-    String password;
+    private final String password;
 
     @JsonProperty("이름")
-    String name;
+    private final String name;
+
+    public Account toAccount(){
+        return new Account(id, name, password);
+    }
 }

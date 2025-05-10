@@ -1,9 +1,13 @@
 package com.vutz.watercalccli.common.dataparser;
 
-import com.vutz.watercalccli.account.dto.Account;
+import com.vutz.watercalccli.account.dto.AccountJsonDto;
 import com.vutz.watercalccli.price.dto.Price;
 import java.util.List;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Component;
 
+@Component
+@ConditionalOnProperty(name = "file.type", havingValue = "csv")
 public class CsvDataParser implements DataParser {
 
     @Override
@@ -22,7 +26,7 @@ public class CsvDataParser implements DataParser {
     }
 
     @Override
-    public List<Account> accounts() {
+    public List<AccountJsonDto> accounts() {
         return List.of();
     }
 }

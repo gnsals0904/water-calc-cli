@@ -2,7 +2,6 @@ package com.vutz.watercalccli.account.repository.impl;
 
 import com.vutz.watercalccli.account.dto.Account;
 import com.vutz.watercalccli.account.exception.DuplicatedAccountIdException;
-import com.vutz.watercalccli.account.exception.NotFoundAccountException;
 import com.vutz.watercalccli.account.repository.AccountRepository;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,5 +27,10 @@ public class InMemoryAccountRepo implements AccountRepository {
         if(Objects.nonNull(account) && account.getPassword().equals(password))
             return Optional.of(account);
         return Optional.empty();
+    }
+
+    @Override
+    public void removeAll() {
+        accountMap.clear();
     }
 }

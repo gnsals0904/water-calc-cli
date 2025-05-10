@@ -1,8 +1,14 @@
 package com.vutz.watercalccli.common.properties;
 
-public class FileProperties {
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
-    private String type;
-    private String pricePath;
-    private String accountPath;
+@Getter
+@RequiredArgsConstructor
+@ConfigurationProperties("file")
+public class FileProperties {
+    private final String type;
+    private final String pricePath;
+    private final String accountPath;
 }

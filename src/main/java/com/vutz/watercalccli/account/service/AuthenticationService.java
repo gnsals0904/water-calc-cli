@@ -1,12 +1,12 @@
 package com.vutz.watercalccli.account.service;
 
-import com.vutz.watercalccli.account.dto.Account;
+import com.vutz.watercalccli.account.dto.AccountJsonDto;
 
 public class AuthenticationService {
 
-    private Account currentAccount;
+    private AccountJsonDto currentAccount;
 
-    public Account login(Long id, String password) {
+    public AccountJsonDto login(Long id, String password) {
         return null;
     }
 

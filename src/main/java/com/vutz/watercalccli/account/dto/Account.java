@@ -1,9 +1,12 @@
 package com.vutz.watercalccli.account.dto;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Getter
+@Getter @ToString
+@EqualsAndHashCode
 @RequiredArgsConstructor
 public class Account {
     private final long id;
