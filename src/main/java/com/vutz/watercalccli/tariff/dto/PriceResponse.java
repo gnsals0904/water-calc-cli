@@ -2,8 +2,9 @@ package com.vutz.watercalccli.tariff.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
-@Getter
+@Getter @ToString
 @RequiredArgsConstructor
 public class PriceResponse {
     private final Tariff tariff;
