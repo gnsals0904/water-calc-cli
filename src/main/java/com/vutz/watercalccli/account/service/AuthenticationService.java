@@ -1,6 +1,6 @@
 package com.vutz.watercalccli.account.service;
 
-import com.vutz.watercalccli.tariff.annotation.LogTariffAction;
+import com.vutz.watercalccli.account.annotation.LogLoginAction;
 import com.vutz.watercalccli.account.dto.Account;
 import com.vutz.watercalccli.account.exception.NotFoundAccountException;
 import com.vutz.watercalccli.account.repository.AccountRepository;
@@ -18,7 +18,7 @@ public class AuthenticationService {
     @Getter
     private Optional<Account> currentAccount = Optional.empty();
 
-    @LogTariffAction(value = "login", secure = false)
+    @LogLoginAction(value = "login")
     public Account login(Long id, String password) {
         Account account = accountRepository.findByIdAndPw(id, password)
                 .orElseThrow(() -> new NotFoundAccountException(id));
@@ -26,7 +26,7 @@ public class AuthenticationService {
         return account;
     }
 
-    @LogTariffAction(value = "logout", secure = false)
+    @LogLoginAction(value = "logout")
     public void logout() {
         currentAccount = Optional.empty();
     }

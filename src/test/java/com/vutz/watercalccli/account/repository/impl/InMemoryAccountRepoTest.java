@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("AccountRepository 단위 테스트")
+@DisplayName("InMemoryAccountRepo 단위 테스트")
 class InMemoryAccountRepoTest {
 
     AccountRepository accountRepository = new InMemoryAccountRepo();
