@@ -38,9 +38,7 @@ public class TariffAop {
                     .collect(Collectors.joining(", "));
 
             log.info("<--- User name : {} called action : {} with args : {} ---", userName, action, arguments);
-
-
-            log.info("--- User name : {} action : {} result : {}", userName, action, result);
+            log.info("--- User name : {} action : {} result : {} --->", userName, action, result);
         }
         return result;
     }

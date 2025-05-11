@@ -57,4 +57,10 @@ public class InMemoryTariffRepository implements TariffRepository {
                 .filter(t -> t.contains(volume))
                 .findFirst();
     }
+
+    @Override
+    public void removeAll() {
+        cityAndSectorMap.clear();
+        tariffMap.clear();
+    }
 }

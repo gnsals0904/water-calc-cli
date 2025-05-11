@@ -10,4 +10,5 @@ public interface TariffRepository {
     List<String> findSectorsByCity(String city);
     List<Tariff> findTariffsByCityAndSector(String city, String sector);
     Optional<Tariff> findTariffByVolume(String city, String sector, int volume);
+    void removeAll();
 }
