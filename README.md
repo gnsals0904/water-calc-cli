@@ -55,7 +55,7 @@ public class JsonDataParser implements DataParser {
 public class CsvDataParser implements DataParser {
 }
 ```
-- 위 두 구현체는 `SpringBoot`의 기능 중, 외부 구성 기능을 통해 `application.properties`에 등록된 값을 통해 둘 중 하나의 구현체만 `Bean`으로 등록
+- 위 두 구현체는 `SpringBoot`의 기능 중, 자동 구성 기능을 통해 `application.properties`에 등록된 값을 통해 둘 중 하나의 구현체만 `Bean`으로 등록
 - 이를 통해, `Json`형식의 데이터를 파싱하는 구현체를 로딩할지, `CSV`형식의 데이터를 파싱하는 구현체를 로딩할지 정할 수 있음
 
 <br>
@@ -301,3 +301,5 @@ public class KoreanOutputFormatter implements OutPutFormatter {
 
 ### `SonarQube`를 통한 코드 품질 검사 및 `TestCoverage` 80% 달성
 - `Mock`과 `Spy`등을 이용하였고, 단위테스트와 통합테스트를 진행하였습니다.
+
+[SonarQube 테스트 결과](https://postfiles.pstatic.net/MjAyNTA1MTFfMjQx/MDAxNzQ2OTY3MTY0NTg2.1O7Ltyt3bE1_ISUdDD_WHJxjVqP5Bi9Mb0S9rXeLdEAg.Grft91NAgBmiBe6oQs0VNL5nbB3Uk3fSOwKxMnnKlggg.PNG/SE-b57f834d-ab0d-4a53-85b9-b94ee18c5a9b.png?type=w773)
