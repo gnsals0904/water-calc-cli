@@ -1,4 +1,4 @@
-package com.vutz.watercalccli.tariff.formatter;
+package com.vutz.watercalccli.common.formatter;
 
 import com.vutz.watercalccli.tariff.dto.Tariff;
 
