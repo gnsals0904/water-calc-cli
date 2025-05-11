@@ -19,4 +19,8 @@ public class Tariff {
     public boolean contains(int value) {
         return sectionStart <= value && value <= sectionEnd;
     }
+
+    public int calcUsagePrice(int usage){
+        return unitPrice * usage;
+    }
 }
