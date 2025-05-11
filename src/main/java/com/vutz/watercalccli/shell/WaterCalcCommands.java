@@ -4,7 +4,7 @@ import com.vutz.watercalccli.account.dto.Account;
 import com.vutz.watercalccli.account.service.AuthenticationService;
 import com.vutz.watercalccli.tariff.dto.PriceResponse;
 import com.vutz.watercalccli.tariff.dto.Tariff;
-import com.vutz.watercalccli.tariff.formatter.OutPutFormatter;
+import com.vutz.watercalccli.common.formatter.OutPutFormatter;
 import com.vutz.watercalccli.tariff.service.TariffService;
 import java.util.List;
 import java.util.Optional;

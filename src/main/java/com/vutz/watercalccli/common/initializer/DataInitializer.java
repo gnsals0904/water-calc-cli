@@ -27,11 +27,9 @@ public class DataInitializer implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         List<Account> accounts = dataParser.loadAccounts();
-        System.out.println(accounts);
         accounts.forEach(accountRepository::save);
 
         List<Tariff> tariffs = dataParser.loadTariffs();
-        System.out.println(tariffs);
         tariffs.forEach(tariffRepository::save);
     }
 }
