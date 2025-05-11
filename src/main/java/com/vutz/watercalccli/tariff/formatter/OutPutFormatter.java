@@ -1,7 +1,8 @@
 package com.vutz.watercalccli.tariff.formatter;
 
-import com.vutz.watercalccli.tariff.dto.Price;
+import com.vutz.watercalccli.tariff.dto.Tariff;
 
 public interface OutPutFormatter {
-    String format(Price price, int usage);
+    String format(Tariff tariff, int usagePrice);
+    String error();
 }
